@@ -1,0 +1,86 @@
+<html>
+<head>
+    <title>Sample Function</title>
+</head>
+<body>
+
+    <h2>Instructions</h2>
+    <p>In javascript: Write a function that, given an array of integers (x), and an integer (y), returns true if any two of the integers in x add up to y. (Optional) Now, write a function that, given the above arguments and an additional integer (z), returns true if any z of the integers in x add up to y.</p>
+
+    <h2>Sample Function 1</h2>
+    <p>sampleFunction1(x, y), where x is array of ints and y is desired sum </p>
+
+    <h2>Sample Function 2</h2>
+    <p>sampleFunction2(x, y, z) where x is array ints, y is desired sum, and z is number of operand</p>
+
+    </br>
+    <p>*both functions are accessible via the javascript console</p>
+
+<script src="test.js"></script>
+<script>
+
+    //would normally do this with jquery for cross browser support
+    document.addEventListener('DOMContentLoaded', function(){
+
+        var testCases = [
+            [ [1,2,3,4,5,6], 12, 3 ],
+            [ [2,2,2,2,2], 4, 3 ],
+            [ [1], 5, 2 ],
+            [ [1,1,1,1,1], 5, 5 ],
+            [ [10001, 10002, 1000, 2000, 500], 10000, 3 ],
+            [ [10001, 10002, 1000, 2000, 500], 13002, 3 ]
+        ];
+
+        function runTest(arrIntVals, targetSum, numOperands){
+            console.log('Can [' + arrIntVals + '] add up to ' + targetSum + ' using ' + numOperands + ' value' + (numOperands === 1? '' : 's') + '? '
+                    + (arrIntVals.canAddTo(targetSum, numOperands) ? 'Yes' : 'No' ) );
+        }
+
+        for(var i=0; i<testCases.length; i++){
+            runTest.apply(this, testCases[i]);
+        }
+
+    });
+
+    //x expected to be array of integers
+    //y expected to be target sum
+    function sampleFunction1(x, y){
+        //simple checks for valid arguments
+        if(!(x instanceof Array)){
+            throw "first argument must be an array";
+        }
+
+        if(isNaN(y)){
+            throw "second argument must be a number";
+        }
+
+        return x.canAddTo(y, 2);
+    }
+
+    //x expected to be array of integers
+    //y expected to be target sum
+    //z expected to be number of operands
+    function sampleFunction2(x, y, z){
+        //simple checks for valid arguments
+        if(!(x instanceof Array)){
+            throw "first argument must be an array";
+        }
+
+        if(isNaN(y)){
+            throw "second argument must be a number";
+        }
+
+        if(isNaN(z)){
+            throw "third argument must be a number";
+        }
+
+        return x.canAddTo(y,z);
+    }
+
+
+
+
+</script>
+
+</body>
+</html>
