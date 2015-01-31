@@ -33,7 +33,7 @@
 
         function runTest(arrIntVals, targetSum, numOperands){
             console.log('Can [' + arrIntVals + '] add up to ' + targetSum + ' using ' + numOperands + ' value' + (numOperands === 1? '' : 's') + '? '
-                    + (arrIntVals.canAddTo(targetSum, numOperands) ? 'Yes' : 'No' ) );
+                    + (arrIntVals.canArraySumTo(targetSum, numOperands) ? 'Yes' : 'No' ) );
         }
 
         for(var i=0; i<testCases.length; i++){
@@ -54,7 +54,7 @@
             throw "second argument must be a number";
         }
 
-        return x.canAddTo(y, 2);
+        return sampleNamespace.canArraySumTo(x, y, 2);
     }
 
     //x expected to be array of integers
@@ -74,7 +74,7 @@
             throw "third argument must be a number";
         }
 
-        return x.canAddTo(y,z);
+        return sampleNamespace.canArraySumTo(x, y, z);
     }
 
 

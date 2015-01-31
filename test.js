@@ -1,8 +1,4 @@
-/*
-    sample function ultimately implemented as method on Array
- */
-
-(function(){
+(function(w){
     'use strict';
 
     function sum(arr){
@@ -13,43 +9,43 @@
         return result;
     }
 
-    function canAddTo(arrIntVals, targetSum, numOperands){
+    function canArraySumTo(arrOfIntValues, targetSum, numberOfOperands){
 
-        /** base cases **/
+        //base cases
 
         //if not enough elements to add, return false
-        if(arrIntVals.length < numOperands){
+        if(arrOfIntValues.length < numberOfOperands){
             return false;
         }
 
-        //if numOperands is 1, see if any one of items in array equals targetSum
-        if(numOperands === 1){
-            for(var i=0; i<arrIntVals.length; i++){
-                if(arrIntVals[i] === targetSum){
+        //if numberOfOperands is 1, see if any one of the items in array equals targetSum
+        if(numberOfOperands === 1){
+            for(var i=0; i<arrOfIntValues.length; i++){
+                if(arrOfIntValues[i] === targetSum){
                     return true;
                 }
             }
             return false;
         }
 
-        //if array is same length as numOperands, check the sum
-        if(arrIntVals.length === numOperands){
-            return sum(arrIntVals) === targetSum;
+        //if array is same length as numberOfOperands, check the sum
+        if(arrOfIntValues.length === numberOfOperands){
+            return sum(arrOfIntValues) === targetSum;
         }
 
-        /** end of base cases **/
+        //end of base cases
 
         var result;
 
-        for(var i=0; i<arrIntVals.length; i++){
+        for(var i=0; i<arrOfIntValues.length; i++){
 
             //there are two possibilities:
-            //1. use the current number to see if array adds up to targetSum
+            //1. use the current number to see if we can add remaining array to targetSum - current number
             //2. don't use the current number and see if the remaining array can add up to targetSum
 
             //get result using the current number, as long as it's not too large
-            if(arrIntVals[i] <= targetSum){
-                result = canAddTo(arrIntVals.slice(i+1), targetSum-arrIntVals[i], numOperands-1);
+            if(arrOfIntValues[i] <= targetSum){
+                result = canArraySumTo(arrOfIntValues.slice(i + 1), targetSum - arrOfIntValues[i], numberOfOperands - 1);
 
                 if(result){
                     return true;
@@ -57,7 +53,7 @@
             }
 
             //get result not using the current number
-            result = canAddTo(arrIntVals.slice(i+1), targetSum, numOperands);
+            result = canArraySumTo(arrOfIntValues.slice(i + 1), targetSum, numberOfOperands);
 
             if(result){
                 return true;
@@ -68,10 +64,9 @@
         return false;
     }
 
-    Array.prototype.canAddTo = function(targetSum, numOperands){
-        return canAddTo(this, targetSum, numOperands);
-    };
+    window.sampleNamespace = window.sampleNamespace || {};
+    window.sampleNamespace.canArraySumTo = canArraySumTo;
 
-})();
+})(window);
 
 
