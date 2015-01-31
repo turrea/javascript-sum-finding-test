@@ -1,7 +1,8 @@
+<!DOCTYPE html>
 <html>
-<head>
-    <title>Sample Function</title>
-</head>
+    <head>
+        <title>Sample Function</title>
+    </head>
 <body>
 
     <h2>Instructions</h2>
@@ -11,7 +12,7 @@
     <p>sampleFunction1(x, y), where x is array of ints and y is desired sum </p>
 
     <h2>Sample Function 2</h2>
-    <p>sampleFunction2(x, y, z) where x is array ints, y is desired sum, and z is number of operand</p>
+    <p>sampleFunction2(x, y, z) where x is array of ints, y is desired sum, and z is number of operands</p>
 
     </br>
     <p>*both functions are accessible via the javascript console</p>
@@ -31,9 +32,9 @@
             [ [10001, 10002, 1000, 2000, 500], 13002, 3 ]
         ];
 
-        function runTest(arrIntVals, targetSum, numOperands){
-            console.log('Can [' + arrIntVals + '] add up to ' + targetSum + ' using ' + numOperands + ' value' + (numOperands === 1? '' : 's') + '? '
-                    + (arrIntVals.canArraySumTo(targetSum, numOperands) ? 'Yes' : 'No' ) );
+        function runTest(arrOfIntVals, targetSum, numberOfOperands){
+            console.log('Can [' + arrOfIntVals + '] add up to ' + targetSum + ' using ' + numberOfOperands + ' value' + (numberOfOperands === 1? '' : 's') + '? '
+                    + (sampleNamespace.canArraySumTo(arrOfIntVals,targetSum, numberOfOperands) ? 'Yes' : 'No' ) );
         }
 
         for(var i=0; i<testCases.length; i++){
@@ -76,9 +77,6 @@
 
         return sampleNamespace.canArraySumTo(x, y, z);
     }
-
-
-
 
 </script>
 

@@ -1,4 +1,4 @@
-(function(w){
+(function(){
     'use strict';
 
     function sum(arr){
@@ -67,6 +67,6 @@
     window.sampleNamespace = window.sampleNamespace || {};
     window.sampleNamespace.canArraySumTo = canArraySumTo;
 
-})(window);
+})();
 
 
